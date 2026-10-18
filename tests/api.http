@@ -1,0 +1,48 @@
+### Dùng với extension "REST Client" trong VS Code: bấm "Send Request" trên mỗi khối.
+@host = http://localhost:8080
+
+### Cấu hình đăng nhập (có bật Google không)
+GET {{host}}/api/auth/config
+
+### Trang chủ (gộp nhiều dữ liệu)
+GET {{host}}/api/home
+
+### Tìm phòng: loại hình + khu vực + giá + diện tích
+GET {{host}}/api/rooms?typeId=1&districtId=5&minPrice=1000000&maxPrice=3500000&minArea=15&sort=price_asc
+
+### Tìm không dấu
+GET {{host}}/api/rooms?keyword=go%20vap
+
+### Gần trường (landmarkId=3)
+GET {{host}}/api/rooms?landmarkId=3&radiusKm=3
+
+### Gợi ý tìm kiếm
+GET {{host}}/api/search/suggest?q=chung
+
+### Tra cứu hóa đơn
+GET {{host}}/api/invoices/lookup?phone=0987654321&room=P102
+
+### Đăng nhập admin
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "username": "admin", "password": "Admin@123" }
+
+###
+@token = {{login.response.body.token}}
+
+### Dashboard
+GET {{host}}/api/admin/dashboard
+Authorization: Bearer {{token}}
+
+### Danh sách phòng (chế độ quản trị, lọc phòng ế)
+GET {{host}}/api/rooms?admin=1&occupancy=empty
+Authorization: Bearer {{token}}
+
+### Tạo hóa đơn tự động
+POST {{host}}/api/admin/invoices/generate
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "contractId": 1, "billingMonth": "2026-11" }

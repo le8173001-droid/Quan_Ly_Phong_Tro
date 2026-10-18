@@ -1,0 +1,166 @@
+/* Giao diện dùng chung – phong cách Lozido: bo góc lớn, xanh lá đậm + cam, nền sáng. */
+:root{--green:#0f7a52;--green-d:#0a5f40;--green-l:#e7f6ef;--mint:#e7f6ef;--peach:#fff0e1;--orange:#ff7a1a;--orange-d:#f26200;--red:#e5412d;--ink:#1d2a33;--mute:#6b7782;--line:#e6ebef;--bg:#f6f8f7;--card:#fff;--radius:16px;--shadow:0 2px 12px rgba(20,50,40,.07);--shadow-lg:0 10px 30px rgba(20,50,40,.14);--max:1200px;--grad-orange:linear-gradient(135deg,#ffa23a,#ff6a00)}
+@media (prefers-color-scheme:dark){:root{--ink:#e8edf2;--mute:#9aa7b4;--line:#2c3742;--bg:#10161b;--card:#1a222a;--green-l:#13342a;--mint:#12302a;--peach:#33261a;--shadow:0 2px 12px rgba(0,0,0,.4);--green:#1fae79;--green-d:#168a60}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:15px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0 0 .4em;line-height:1.25}
+.container{max-width:var(--max);margin:0 auto;padding:0 16px}
+.hidden{display:none!important}
+.muted{color:var(--mute)}
+.center{text-align:center}
+
+/* ---------- thanh thông báo + header ---------- */
+.site-header{position:sticky;top:-36px;z-index:60}
+.notice{height:36px;background:#f6efe3;color:#6b5330;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;white-space:nowrap;overflow:hidden}
+.notice a{font-weight:700;color:#b25b00}
+@media (prefers-color-scheme:dark){.notice{background:#3a3020;color:#e8d3a8}.notice a{color:#ffb866}}
+.hdr{background:var(--card);border-bottom:1px solid var(--line)}
+.hdr .bar{display:flex;align-items:center;gap:14px;height:64px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:21px;color:var(--green);flex:none}
+.logo img{width:34px;height:34px}
+.logo b{color:var(--orange)}
+.nav{display:flex;gap:2px;flex:1;margin-left:8px;background:#f1f5f3;border-radius:999px;padding:4px;width:max-content;max-width:100%}
+@media (prefers-color-scheme:dark){.nav{background:#222c34}}
+.nav a{padding:7px 14px;border-radius:999px;font-weight:600;font-size:14px;color:var(--mute);white-space:nowrap}
+.nav a:hover{color:var(--green)}
+.nav a.active{background:var(--card);color:var(--green);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.hdr-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.landlord-link{display:flex;flex-direction:column;line-height:1.2;text-align:right;font-weight:700;font-size:14px}
+.landlord-link small{font-weight:500;color:var(--orange);font-size:12px}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:inline-flex;align-items:center;justify-content:center;font-size:18px;color:#e5412d;cursor:pointer}
+.icon-btn:hover{box-shadow:var(--shadow)}
+.user-menu{position:relative}
+.user-pill{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 6px 5px 14px;cursor:pointer;font:inherit}
+.user-pill:hover{box-shadow:var(--shadow)}
+.user-pill .burger{font-size:18px;line-height:1}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--grad-orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.avatar.g{background:linear-gradient(135deg,#34c38f,#0f7a52)}
+.user-menu .drop{position:absolute;right:0;top:115%;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;display:none}
+.user-menu.open .drop{display:block}
+.user-menu .drop a,.user-menu .drop button{display:block;width:100%;text-align:left;padding:9px 12px;border-radius:9px;background:none;border:0;color:var(--ink);font:inherit;cursor:pointer}
+.user-menu .drop a:hover,.user-menu .drop button:hover{background:var(--green-l)}
+.user-menu .drop .who{padding:8px 12px;font-weight:700;border-bottom:1px solid var(--line);margin-bottom:4px}
+.user-menu .drop .only-m{display:none}
+.user-menu .drop hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+
+/* ---------- nút ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:12px;border:1px solid transparent;font:inherit;font-weight:700;cursor:pointer;background:var(--green);color:#fff;transition:.15s}
+.btn:hover{background:var(--green-d)}
+.btn.orange{background:var(--grad-orange)}.btn.orange:hover{filter:brightness(.95);background:var(--grad-orange)}
+.btn.ghost{background:transparent;color:var(--green);border-color:var(--green)}
+.btn.ghost:hover{background:var(--green-l)}
+.btn.light{background:var(--card);color:var(--ink);border-color:var(--line)}
+.btn.light:hover{background:var(--green-l)}
+.btn.sm{padding:7px 13px;font-size:13px;border-radius:10px}
+.btn.block{width:100%}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn.zalo-o{background:var(--card);color:#0068ff;border-color:#0068ff}
+.btn.zalo-o:hover{background:#eaf2ff}
+.btn.dark{background:#0d4a35}.btn.dark:hover{background:#093a2a}
+
+/* ---------- form ---------- */
+label{display:block;font-weight:600;margin-bottom:4px;font-size:14px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--green);outline-offset:-1px}
+textarea{min-height:90px;resize:vertical}
+.field{margin-bottom:12px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.alert{padding:10px 12px;border-radius:12px;margin-bottom:12px;font-size:14px}
+.alert.err{background:#fdecea;color:#b71c1c}
+.alert.ok{background:#e6f6ed;color:#0a6b3a}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+
+/* ---------- mục ---------- */
+.section{padding:26px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:16px}
+.section-head h2{font-size:24px;margin:0;font-weight:800}
+.section-head p{margin:2px 0 0;color:var(--mute);font-size:14px}
+.section-head a.more{color:var(--green);font-weight:700;white-space:nowrap}
+
+/* ---------- thẻ phòng (lưới) ---------- */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.room-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:.18s}
+.room-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.room-card .thumb{position:relative;aspect-ratio:4/3;background:var(--green-l);display:block;margin:8px 8px 0;border-radius:12px;overflow:hidden}
+.room-card .thumb img{width:100%;height:100%;object-fit:cover}
+.badges{position:absolute;left:8px;top:8px;display:flex;gap:4px;flex-wrap:wrap;max-width:calc(100% - 56px)}
+.badge{font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px;color:#fff;background:var(--green)}
+.badge.ver{background:rgba(255,255,255,.95);color:var(--green);display:inline-flex;align-items:center;gap:3px}
+.badge.now{background:#1e88e5}.badge.hot{background:var(--red)}.badge.new{background:var(--orange)}.badge.deal{background:#8e24aa}
+.imgcount{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px}
+.fav{position:absolute;right:16px;top:16px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.95);font-size:18px;cursor:pointer;color:#a9b2b9;box-shadow:0 1px 4px rgba(0,0,0,.15);z-index:2}
+.fav.on{color:var(--red)}
+.room-card .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.room-card .type{font-size:12px;color:var(--green);font-weight:700}
+.room-card h3{font-size:15px;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:700}
+.room-card h3 a:hover{color:var(--green)}
+.owner-line{font-size:13px;color:var(--mute);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.price{color:var(--orange-d);font-weight:800;font-size:18px;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.price small{color:var(--mute);font-weight:500;font-size:13px}
+.price del{color:var(--mute);font-weight:500;font-size:13px}
+.price .off{background:#ffe9e5;color:var(--red);font-size:12px;font-weight:800;padding:1px 7px;border-radius:6px}
+.meta{font-size:13px;color:var(--mute)}
+.card-actions{display:flex;gap:8px;margin-top:auto;padding-top:6px}
+.card-actions .btn{flex:1}
+
+/* thẻ phòng dạng danh sách (Phòng trọ mới nhất) */
+.list2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.row-card{flex-direction:row;padding:10px;gap:14px}
+.row-card .thumb{margin:0;width:230px;flex:none;aspect-ratio:auto;min-height:190px}
+.row-card .fav{right:auto;left:18px;top:auto;bottom:18px}
+.row-card .body{padding:2px 4px 2px 0}
+.row-card .by{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-top:auto}
+.row-card .by .when{margin-left:auto}
+.row-card .card-actions{padding-top:4px}
+.row-card .card-actions .btn{flex:1}
+
+/* ---------- phân trang ---------- */
+.pager{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.pager button{min-width:40px;padding:8px 11px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;cursor:pointer;font:inherit}
+.pager button.cur{background:var(--green);color:#fff;border-color:var(--green)}
+.pager button:disabled{opacity:.5;cursor:default}
+
+/* ---------- chân trang ---------- */
+.site-footer{margin-top:40px;padding:36px 0 18px;background:radial-gradient(circle,rgba(15,122,82,.13) 1.3px,transparent 1.6px) 0 0/18px 18px,var(--mint);color:var(--ink)}
+.site-footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:24px}
+.site-footer h4{margin:0 0 10px;font-size:16px}
+.site-footer a{display:block;padding:3px 0;color:var(--mute)}
+.site-footer a:hover{color:var(--green)}
+.site-footer .links-block{background:rgba(120,130,140,.12);border-radius:var(--radius);padding:14px 18px;margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 22px}
+.site-footer .links-block a{padding:2px 0;font-size:13px}
+.site-footer .copy{border-top:1px solid var(--line);margin-top:18px;padding-top:12px;font-size:13px;color:var(--mute)}
+
+/* nút nổi */
+.float-btns{position:fixed;right:16px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.float-btns a,.float-btns button{width:46px;height:46px;border-radius:50%;border:0;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;cursor:pointer;font:inherit}
+.float-zalo{background:#0068ff;font-size:13px!important}
+.float-top{background:var(--card)!important;color:var(--ink)!important;border:1px solid var(--line)!important;font-size:20px!important}
+
+/* ---------- toast + modal ---------- */
+.toasts{position:fixed;right:16px;bottom:80px;z-index:200;display:flex;flex-direction:column;gap:8px}
+.toast{background:#173f31;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:var(--shadow-lg);max-width:320px}
+.toast.err{background:#b71c1c}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:150;padding:16px}
+.modal{background:var(--card);border-radius:18px;padding:20px;max-width:440px;width:100%;max-height:90vh;overflow:auto}
+.spinner{padding:30px;text-align:center;color:var(--mute)}
+.empty{padding:40px 16px;text-align:center;color:var(--mute)}
+
+/* ---------- đáp ứng ---------- */
+@media (max-width:1100px){.nav a{padding:7px 10px;font-size:13px}.landlord-link{display:none}}
+@media (max-width:900px){
+ .nav{display:none}
+ .user-menu .drop .only-m{display:block}
+ .list2{grid-template-columns:1fr}
+ .site-footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+ .notice{font-size:12px}
+ .row-card{flex-direction:column}
+ .row-card .thumb{width:100%;min-height:0;aspect-ratio:16/10}
+ .site-footer .cols{grid-template-columns:1fr}
+ .section-head h2{font-size:20px}
+}
+@media (max-width:560px){.notice a{display:none}.notice span{overflow:hidden;text-overflow:ellipsis}}
